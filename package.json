@@ -1,0 +1,25 @@
+{
+  "name": "interactive-card-details-form",
+  "version": "1.0.0",
+  "description": "This is a solution to the [Interactive card details form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-card-details-form-XpS8cKZDWw). Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n53337/Interactive-card-details-form.git"
+  },
+  "keywords": [],
+  "author": "u53f",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/n53337/Interactive-card-details-form/issues"
+  },
+  "homepage": "https://github.com/n53337/Interactive-card-details-form#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.7.0",
+    "parcel": "^2.7.0"
+  }
+}
