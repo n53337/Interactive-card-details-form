@@ -24,6 +24,7 @@
   border: none;
   border-radius: 0.5rem;
   z-index: 10;
+  transition: 0.6s;
 
   &-front {
     background-image: url(./../img/bg-card-front.png);
@@ -48,7 +49,7 @@
 
       &-num {
         display: flex;
-        gap: 10;
+        gap: 5%;
         font-size: 1.2rem;
       }
 
@@ -79,30 +80,21 @@
 
 // Form Section
 
-.form {
+.wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-transform: uppercase;
   letter-spacing: 0.1rem;
+}
 
+.form {
   &__content {
+    text-transform: uppercase;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin: 0 50%;
     margin-right: 40%;
-
-    input {
-      outline: none;
-      border: none;
-      border: 1.5px solid var(--clr-light);
-      border-radius: 10px;
-      padding: 0.5rem 1rem;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-      font-family: var(--ff-primary);
-    }
 
     &-name,
     &-number {
@@ -111,6 +103,7 @@
 
     label {
       margin-bottom: 0.5rem;
+      margin-top: 1.5rem;
       color: var(--clr-darker);
       font-size: 0.65rem;
     }
@@ -141,14 +134,52 @@
   }
 }
 
+.input {
+  border: none;
+  border: 1.5px solid var(--clr-light);
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-family: var(--ff-primary);
+
+  &:focus {
+    border-color: var(--clr-purple);
+  }
+
+  &::placeholder {
+    color: var(--clr-dark);
+  }
+}
+
+.done {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 15%;
+  gap: 20;
+
+  & > h1 {
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    font-weight: lighter;
+  }
+
+  & > p {
+    color: var(--clr-dark);
+    margin-top: -1rem;
+  }
+}
+
+// Reusable Component
+
 .btn-main {
   font-family: var(--ff-primary);
   width: 22rem;
   margin-top: 1rem;
-  outline: none;
   border: none;
   border-radius: 10px;
-  padding: 0.5rem 1rem;
+  padding: 0.8rem 1rem;
   font-size: 1rem;
   color: var(--clr-white);
   background-color: var(--clr-purple);
@@ -156,5 +187,103 @@
 
   &:hover {
     color: var(--clr-dark);
+  }
+}
+
+.input-error-msg {
+  color: var(--clr-errors);
+  font-size: 0.6rem;
+  text-transform: none;
+  margin-top: 0.4rem;
+}
+
+.input-error {
+  border-color: var(--clr-errors);
+}
+
+// BreakPoints
+
+//! Meduim screens
+@media screen and (max-width: 1045px) {
+  .card {
+    transition: 0.6s;
+    &-front {
+      top: 20%;
+      left: -15%;
+      transform: rotate(90deg);
+      z-index: 20;
+    }
+
+    &-back {
+      top: 40%;
+      left: -5%;
+      transform: rotate(90deg);
+    }
+  }
+
+  .done {
+    margin: 0;
+  }
+}
+
+//! Small screens
+
+@media screen and (max-width: 650px) {
+  .container {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-area: 30% 70%;
+  }
+
+  .card {
+    width: 12rem;
+    height: 7rem;
+    transition: 0.6s;
+    &-front {
+      transform: rotate(0deg);
+      top: 50%;
+      left: 5%;
+      z-index: 20;
+    }
+
+    &-back {
+      transform: rotate(0deg);
+      top: 10%;
+      left: 20%;
+      padding-right: 1rem;
+      padding-bottom: 0.2rem;
+    }
+  }
+
+  .card-front__content-num {
+    font-size: 0.8rem;
+  }
+
+  .form {
+    &__content {
+      margin: 0%;
+      &-name,
+      &-number {
+        width: 20rem;
+      }
+      &-date {
+        &__l-cvc {
+          margin-left: 0.6rem;
+        }
+
+        &__dt {
+          width: 4.5rem;
+          margin-right: 1rem;
+        }
+
+        &__cvc {
+          width: 9rem;
+        }
+      }
+    }
+  }
+
+  .btn-main {
+    width: 20rem;
   }
 }

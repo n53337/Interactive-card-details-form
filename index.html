@@ -11,10 +11,11 @@
     />
     <title>Frontend Mentor | Interactive card details form</title>
     <link rel="stylesheet" href="/src/scss/main.scss" />
+    <script src="./src/js/controller.js"></script>
   </head>
   <body>
     <div class="container">
-      <section class="cards-container">
+       <section class="cards-container">
         <figure class="card card-front">
           <img class="card-front__shape" src="/src/img/card-logo.svg" alt="" />
           <div class="card-front__content">
@@ -34,22 +35,26 @@
           <p class="card-back__cvc">000</p>
         </figure>
       </section>
-      <section class="form">
-        <form class="form__content" action="#">
+
+      <!-- <section class="wrapper">
+        <form class="form__content wrapper" action="#">
           <label for="card-name">cardholder name</label>
           <input
-            class="form__content-name"
+            class="input form__content-name"
             type="text"
             name=""
             id="card-name"
-          />
-
-          <label for="card-number">card number</label>
+            placeholder="e.g. Jhon Doe"
+          /> -->
+          <!-- Error Message Template  -->
+          <!-- <span class="input-error-msg">test test eroor</span> -->
+          <!-- <label for="card-number">card number</label>
           <input
-            class="form__content-number"
+            class="input form__content-number"
             type="text"
             name=""
             id="card-number"
+            placeholder="e.g. 1234 5678 9123 0000"
           />
 
           <div class="form__content-date">
@@ -57,32 +62,44 @@
               >exp. date (mm/yy)</label
             >
             <input
-              class="form__content-date__dt"
+              class="input form__content-date__dt"
               type="text"
               name=""
               id="exp-date"
-              class=""
+              placeholder="MM"
             />
             <input
-              class="form__content-date__dt"
+              class="input form__content-date__dt"
               type="text"
               name=""
               id="exp-date"
-              class=""
+              placeholder="YY"
             />
 
             <label class="form__content-date__l-cvc" for="cvc">cvc</label>
             <input
-              class="form__content-date__cvc"
+              class="input form__content-date__cvc"
               type="text"
               name=""
               id="cvc"
+              placeholder="e.g. 123"
             />
           </div>
 
           <button class="form__content-submit btn-main" type="submit">
             confirm
-          </button>
+          </button> -->
+
+          <!-- Done Template -->
+
+          <article class="done">
+            <figure class="done__img">
+              <img src="/src/img/icon-complete.svg" alt="">
+            </figure>
+            <h1>thank you!</h1>
+            <p>We've added your card details</p>
+            <button class="btn-main">Continue</button>
+          </article>
         </form>
       </section>
     </div>
