@@ -5,6 +5,8 @@
   grid-template-columns: 30% 70%;
 }
 
+// Cards Section
+
 .cards-container {
   background-image: url(./../img/bg-main-desktop.png);
   background-repeat: no-repeat;
@@ -72,5 +74,87 @@
       color: var(--clr-white);
       font-size: 0.7rem;
     }
+  }
+}
+
+// Form Section
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 50%;
+    margin-right: 40%;
+
+    input {
+      outline: none;
+      border: none;
+      border: 1.5px solid var(--clr-light);
+      border-radius: 10px;
+      padding: 0.5rem 1rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      font-family: var(--ff-primary);
+    }
+
+    &-name,
+    &-number {
+      width: 22rem;
+    }
+
+    label {
+      margin-bottom: 0.5rem;
+      color: var(--clr-darker);
+      font-size: 0.65rem;
+    }
+
+    &-date {
+      display: grid;
+      grid-template-columns: repeat(2, 25%) 50%;
+      &__l-dt {
+        grid-column: 1/3;
+      }
+
+      &__l-cvc {
+        grid-column: 3/4;
+        grid-row: 1/2;
+        margin-left: 0.6rem;
+      }
+
+      &__dt {
+        width: 5rem;
+        margin-right: 1rem;
+      }
+
+      &__cvc {
+        width: 10rem;
+        margin-left: 0.6rem;
+      }
+    }
+  }
+}
+
+.btn-main {
+  font-family: var(--ff-primary);
+  width: 22rem;
+  margin-top: 1rem;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: var(--clr-white);
+  background-color: var(--clr-purple);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--clr-dark);
   }
 }

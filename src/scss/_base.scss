@@ -5,7 +5,7 @@
   --clr-white: hsl(0, 0%, 100%);
   --clr-light: hsl(270, 3%, 87%);
   --clr-dark: hsl(279, 6%, 55%);
-  --clr-darker: hsl(278, 68%, 11%);
+  --clr-purple: hsl(278, 68%, 11%);
 
   // Typography
   --ff-primary: "Space Grotesk", sans-serif;
@@ -17,6 +17,11 @@
   padding: 0;
   margin: 0;
   box-sizing: inherit;
+}
+
+*::selection {
+  //* i didn't use (--clr-purple), idk what wrong with it, you can try out with it
+  background-color: rgba(177, 1, 177, 0.619);
 }
 
 html {

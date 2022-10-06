@@ -37,19 +37,52 @@
       <section class="form">
         <form class="form__content" action="#">
           <label for="card-name">cardholder name</label>
-          <input type="text" name="" id="card-name" />
+          <input
+            class="form__content-name"
+            type="text"
+            name=""
+            id="card-name"
+          />
 
           <label for="card-number">card number</label>
-          <input type="text" name="" id="card-number" />
+          <input
+            class="form__content-number"
+            type="text"
+            name=""
+            id="card-number"
+          />
 
-          <div class="date">
-            <label for="exp-date">exp. date (mm/yy)</label>
-            <input type="text" name="" id="exp-date" class="" />
-            <input type="text" name="" id="exp-date" class="" />
+          <div class="form__content-date">
+            <label class="form__content-date__l-dt" for="exp-date"
+              >exp. date (mm/yy)</label
+            >
+            <input
+              class="form__content-date__dt"
+              type="text"
+              name=""
+              id="exp-date"
+              class=""
+            />
+            <input
+              class="form__content-date__dt"
+              type="text"
+              name=""
+              id="exp-date"
+              class=""
+            />
 
-            <label for="cvc">cvc</label>
-            <input type="number" name="" id="cvc" />
+            <label class="form__content-date__l-cvc" for="cvc">cvc</label>
+            <input
+              class="form__content-date__cvc"
+              type="text"
+              name=""
+              id="cvc"
+            />
           </div>
+
+          <button class="form__content-submit btn-main" type="submit">
+            confirm
+          </button>
         </form>
       </section>
     </div>
