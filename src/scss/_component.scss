@@ -121,7 +121,8 @@
         margin-left: 0.6rem;
       }
 
-      &__dt {
+      &__month,
+      &__year {
         width: 5rem;
         margin-right: 1rem;
       }
@@ -204,7 +205,7 @@
 // BreakPoints
 
 //! Meduim screens
-@media screen and (max-width: 1045px) {
+@media screen and (max-width: 1050px) {
   .card {
     transition: 0.6s;
     &-front {
@@ -221,14 +222,22 @@
     }
   }
 
+  .form {
+    &__content {
+      margin: 0%;
+      margin-right: 5rem;
+    }
+  }
+
   .done {
     margin: 0;
+    margin-right: 1.5rem;
   }
 }
 
 //! Small screens
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 750px) {
   .container {
     display: grid;
     grid-template-columns: 100%;
@@ -271,7 +280,8 @@
           margin-left: 0.6rem;
         }
 
-        &__dt {
+        &__month,
+        &__year {
           width: 4.5rem;
           margin-right: 1rem;
         }

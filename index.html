@@ -11,19 +11,19 @@
     />
     <title>Frontend Mentor | Interactive card details form</title>
     <link rel="stylesheet" href="/src/scss/main.scss" />
-    <script src="./src/js/controller.js"></script>
+    <script src="./src/js/app.js"></script>
   </head>
   <body>
     <div class="container">
-       <section class="cards-container">
+      <section class="cards-container">
         <figure class="card card-front">
           <img class="card-front__shape" src="/src/img/card-logo.svg" alt="" />
           <div class="card-front__content">
             <div class="card-front__content-num">
-              <span>0000</span>
-              <span>0000</span>
-              <span>0000</span>
-              <span>0000</span>
+              <span class="display-degit1">0000</span>
+              <span class="display-degit2">0000</span>
+              <span class="display-degit3">0000</span>
+              <span class="display-degit4">0000</span>
             </div>
             <div class="card-front__content-info">
               <p class="card-front__content-info__nm">u53f</p>
@@ -36,7 +36,7 @@
         </figure>
       </section>
 
-      <!-- <section class="wrapper">
+      <section class="wrapper">
         <form class="form__content wrapper" action="#">
           <label for="card-name">cardholder name</label>
           <input
@@ -45,16 +45,18 @@
             name=""
             id="card-name"
             placeholder="e.g. Jhon Doe"
-          /> -->
+            maxlength="30"
+          />
           <!-- Error Message Template  -->
           <!-- <span class="input-error-msg">test test eroor</span> -->
-          <!-- <label for="card-number">card number</label>
+          <label for="card-number">card number</label>
           <input
             class="input form__content-number"
             type="text"
             name=""
             id="card-number"
             placeholder="e.g. 1234 5678 9123 0000"
+            maxlength="16"
           />
 
           <div class="form__content-date">
@@ -62,18 +64,20 @@
               >exp. date (mm/yy)</label
             >
             <input
-              class="input form__content-date__dt"
+              class="input form__content-date__month"
               type="text"
               name=""
               id="exp-date"
               placeholder="MM"
+              maxlength="2"
             />
             <input
-              class="input form__content-date__dt"
+              class="input form__content-date__year"
               type="text"
               name=""
               id="exp-date"
               placeholder="YY"
+              maxlength="2"
             />
 
             <label class="form__content-date__l-cvc" for="cvc">cvc</label>
@@ -83,23 +87,24 @@
               name=""
               id="cvc"
               placeholder="e.g. 123"
+              maxlength="3"
             />
           </div>
 
           <button class="form__content-submit btn-main" type="submit">
             confirm
-          </button> -->
+          </button>
 
           <!-- Done Template -->
 
-          <article class="done">
+          <!-- <article class="done">
             <figure class="done__img">
               <img src="/src/img/icon-complete.svg" alt="">
             </figure>
             <h1>thank you!</h1>
             <p>We've added your card details</p>
             <button class="btn-main">Continue</button>
-          </article>
+          </article> -->
         </form>
       </section>
     </div>
