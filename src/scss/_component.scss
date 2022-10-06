@@ -2,7 +2,7 @@
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-columns: 35% 65%;
+  grid-template-columns: 30% 70%;
 }
 
 .cards-container {
@@ -16,7 +16,12 @@
   width: 18rem;
   height: 10rem;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  position: absolute;
+  box-shadow: rgba(0, 0, 0, 0.35) 5px 5px 30px;
+  border: none;
+  border-radius: 0.5rem;
+  z-index: 10;
 
   &-front {
     background-image: url(./../img/bg-card-front.png);
@@ -24,6 +29,8 @@
     flex-direction: column;
     justify-content: space-around;
     padding: 0rem 1rem;
+    top: 20%;
+    left: 40%;
 
     &__shape {
       width: 22%;
@@ -58,6 +65,9 @@
     align-items: center;
     padding-right: 2.5rem;
     padding-bottom: 0.3rem;
+    top: 50%;
+    left: 60%;
+
     & > p {
       color: var(--clr-white);
       font-size: 0.7rem;
