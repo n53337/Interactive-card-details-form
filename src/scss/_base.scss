@@ -1,3 +1,16 @@
+:root {
+  // Colors
+  --clr-primary: Linear-gradient(hsl(249, 99%, 64%), hsl(278, 94%, 30%));
+  --clr-errors: hsl(0, 100%, 66%);
+  --clr-white: hsl(0, 0%, 100%);
+  --clr-light: hsl(270, 3%, 87%);
+  --clr-dark: hsl(279, 6%, 55%);
+  --clr-darker: hsl(278, 68%, 11%);
+
+  // Typography
+  --ff-primary: "Space Grotesk", sans-serif;
+}
+
 *,
 *::after,
 *::before {
@@ -7,6 +20,10 @@
 }
 
 html {
-  font-size: 62.5%;
+  font-size: 18px;
   box-sizing: border-box;
+}
+
+body {
+  font-family: var(--ff-primary);
 }
