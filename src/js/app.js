@@ -57,8 +57,9 @@ const app = () => {
     value: document.querySelector(".card-back__cvc").textContent,
   };
 
-  //! Application Logic
-  // card real time update function
+  //! APPLICATION LOGIC
+
+  // Card data real-time update function
   const updateCard = (element, content, defaultContent) => {
     element.textContent = content;
     if (!content) element.textContent = defaultContent;
@@ -66,24 +67,38 @@ const app = () => {
 
   // Handler
   const handler = () => {
+    // Name/ExpDate/Cvc real-time update
     const realTimeItems = [cardName, cardExpMonth, cardExpYear, cardCvc];
-
     realTimeItems.forEach((e) => {
       e.input.addEventListener("keyup", () => {
         updateCard(e.element, e.input.value, e.value);
       });
     });
 
-    // Card degit handler
-    inputNumber.addEventListener("keyup", () => {
-      console.log(Math.ceil(inputNumber.value.length / 4) - 1);
-      const index = Math.ceil(inputNumber.value.length / 4) - 1;
+    // Card digit input parce
+    inputNumber.addEventListener("keydown", () => {
+      const spaceIndex = [4, 9, 14];
+      spaceIndex.forEach((e) => {
+        if (inputNumber.value.length === e) {
+          inputNumber.value += " ";
+        }
+      });
+    });
 
-      updateCard(
-        cardDegit[index].element,
-        inputNumber.value.slice(index * 4, index * 4 + 4),
-        cardDegit[index].value
-      );
+    // Card digit real-time update
+    inputNumber.addEventListener("keyup", () => {
+      const inptValue = inputNumber.value.length;
+      const callUpdateCard = (index, cut) => {
+        updateCard(
+          cardDegit[index].element,
+          inputNumber.value.slice(cut[0], cut[1]),
+          cardDegit[index].value
+        );
+      };
+      if (0 <= inptValue <= 4) callUpdateCard(0, [0, 4]);
+      if (4 <= inptValue <= 9) callUpdateCard(1, [5, 9]);
+      if (10 <= inptValue <= 14) callUpdateCard(2, [10, 14]);
+      if (15 <= inptValue <= 19) callUpdateCard(3, [15, 19]);
     });
   };
   handler();
