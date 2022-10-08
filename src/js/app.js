@@ -2,6 +2,9 @@ const app = () => {
   // Parent Element
   const wrapper = document.querySelector(".wrapper");
 
+  // Form
+  const form = document.querySelector(".form__content");
+  const errorElement = document.querySelector(".input-error-msg");
   // inputs
   const inputName = document.querySelector(".form__content-name");
   const inputNumber = document.querySelector(".form__content-number");
@@ -14,22 +17,18 @@ const app = () => {
   const cardDegit = [
     {
       element: document.querySelector(".display-degit1"),
-      // input: inputNumber,
       value: document.querySelector(".display-degit1").textContent,
     },
     {
       element: document.querySelector(".display-degit2"),
-      // input: inputNumber,
       value: document.querySelector(".display-degit2").textContent,
     },
     {
       element: document.querySelector(".display-degit3"),
-      // input: inputNumber,
       value: document.querySelector(".display-degit3").textContent,
     },
     {
       element: document.querySelector(".display-degit4"),
-      // input: inputNumber,
       value: document.querySelector(".display-degit4").textContent,
     },
   ];
@@ -102,6 +101,50 @@ const app = () => {
     });
   };
   handler();
+
+  // Form Validation
+
+  const formValidation = () => {
+    // check Form
+    const checkForm = () => {
+      // error display
+      const displayError = (parentElm, message) => {
+        const errElm = document.querySelector(
+          `.${parentElm.classList[0]} .input-error-msg`
+        );
+        errElm.style.display = "block";
+        errElm.textContent = message;
+      };
+
+      // valid form
+      const valid = () => {};
+
+      // checking card number
+      const cardAbsValue = inputNumber.value.replaceAll(" ", "");
+      if (!Number.isInteger(Number(cardAbsValue))) {
+        displayError(inputNumber.parentElement, "hhh");
+      }
+
+      // checking date
+      [inputExpMonth, inputExpYear].forEach((e) => {
+        if (!Number.isInteger(Number(e.value))) {
+          displayError(e.parentElement.parentElement, "test");
+        }
+      });
+
+      // checking date
+      if (!Number.isInteger(Number(inputCvc.value))) {
+        displayError(inputCvc.parentElement, "hello");
+      }
+    };
+
+    // form handler
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      checkForm();
+    });
+  };
+  formValidation();
 };
 
 window.addEventListener("load", app);

@@ -41,59 +41,72 @@
       </section>
 
       <section class="wrapper">
-        <form class="form__content wrapper" action="#">
-          <label for="card-name">cardholder name</label>
-          <input
-            class="input form__content-name"
-            type="text"
-            name=""
-            id="card-name"
-            placeholder="e.g. Jhon Doe"
-            maxlength="30"
-          />
-          <!-- Error Message Template  -->
-          <!-- <span class="input-error-msg">test test eroor</span> -->
-          <label for="card-number">card number</label>
-          <input
-            class="input form__content-number"
-            type="text"
-            name=""
-            id="card-number"
-            placeholder="e.g. 1234 5678 9123 0000"
-            maxlength="19"
-            type="tel"
-          />
+        <form class="form__content" action="#">
+          <div class="form__content-info1">
+            <label for="card-name">cardholder name</label>
+            <input
+              class="input form__content-name"
+              type="text"
+              name=""
+              id="card-name"
+              placeholder="e.g. Jhon Doe"
+              maxlength="30"
+            />
+            <span class="input-error-msg" style="display: none"></span>
+          </div>
+
+          <div class="form__content-info2">
+            <label for="card-number">card number</label>
+            <input
+              class="input form__content-number"
+              type="text"
+              name=""
+              id="card-number"
+              placeholder="e.g. 1234 5678 9123 0000"
+              maxlength="19"
+              type="tel"
+            />
+            <span class="input-error-msg" style="display: none"></span>
+          </div>
 
           <div class="form__content-date">
-            <label class="form__content-date__l-dt" for="exp-date"
-              >exp. date (mm/yy)</label
-            >
-            <input
-              class="input form__content-date__month"
-              type="text"
-              name=""
-              id="exp-date"
-              placeholder="MM"
-              maxlength="2"
-            />
-            <input
-              class="input form__content-date__year"
-              type="text"
-              name=""
-              id="exp-date"
-              placeholder="YY"
-              maxlength="2"
-            />
+            <div class="form__content-date-s1">
+              <label class="form__content-date__l-dt" for="exp-date"
+                >exp. date (mm/yy)</label
+              >
+              <div class="form__content-date-s1-holder">
+                <input
+                  class="input form__content-date__month"
+                  type="text"
+                  name=""
+                  id="exp-date"
+                  placeholder="MM"
+                  maxlength="2"
+                />
+                <input
+                  class="input form__content-date__year"
+                  type="text"
+                  name=""
+                  id="exp-date"
+                  placeholder="YY"
+                  maxlength="2"
+                />
+              </div>
+              <span class="input-error-msg" style="display: none"></span>
+            </div>
 
-            <label class="form__content-date__l-cvc" for="cvc">cvc</label>
-            <input
-              class="input form__content-date__cvc"
-              type="text"
-              name=""
-              id="cvc"
-              placeholder="e.g. 123"
-              maxlength="3"
-            />
+            <div class="form__content-date-s2">
+              <label class="form__content-date__l-cvc" for="cvc">cvc</label>
+              <input
+                class="input form__content-date__cvc"
+                type="text"
+                name=""
+                id="cvc"
+                placeholder="e.g. 123"
+                maxlength="3"
+              />
+              <span class="input-error-msg" style="display: none"></span>
+            </div>
           </div>
 
           <button class="form__content-submit btn-main" type="submit">
