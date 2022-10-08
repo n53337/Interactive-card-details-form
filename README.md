@@ -72,7 +72,7 @@ A mini guid to clone, install and run the project on your local machine
 ~$ npm start
 ```
 
-- now you will see a link on the terminal, just press `Ctrl` + `RightClick` and BOOM the app is live into you machine!
+- now you will see a link on the terminal, just press `Ctrl` + `RightClick` and BOOM the app is live now on you machine!
 
 ## My process
 
