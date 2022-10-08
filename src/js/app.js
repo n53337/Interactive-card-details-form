@@ -249,9 +249,18 @@ const app = () => {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       if (!checkForm().length) {
-        console.log("alhamdolillah");
-        form.remove();
-        wrapper.insertAdjacentHTML("afterbegin", donePageTemplate);
+        setTimeout(() => {
+          wrapper.classList.add("blur");
+          document.querySelector(".card-back").classList.add("blur");
+          document.querySelector(".card-front").classList.add("card-anim");
+        }, 500);
+        setTimeout(() => {
+          form.remove();
+          wrapper.classList.remove("blur");
+          wrapper.insertAdjacentHTML("afterbegin", donePageTemplate);
+          document.querySelector(".card-back").classList.remove("blur");
+          document.querySelector(".card-front").classList.remove("card-anim");
+        }, 3000);
       }
     });
   };
