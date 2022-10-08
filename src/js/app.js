@@ -56,7 +56,7 @@ const app = () => {
     value: document.querySelector(".card-back__cvc").textContent,
   };
 
-  //! APPLICATION LOGIC
+  // ! APPLICATION LOGIC
 
   // Card data real-time update function
   const updateCard = (element, content, defaultContent) => {
@@ -103,16 +103,18 @@ const app = () => {
   handler();
 
   // Form Validation
-
   const formValidation = () => {
     // check Form
     const checkForm = () => {
-      let isValid = [];
+      // validation checker
+      const isValid = [];
 
       // Error Messages layout
       const wrongFormat = "Wrong Format, numbers only!";
       const blankField = `Can't be blank!`;
       const incomplete = `Incomplete information!`;
+      const nonValidMonth = `month is not correct`;
+      const nonValidYear = `Year is not correct`;
 
       // error display
       const displayError = (elemet, parentElm, message) => {
@@ -121,66 +123,136 @@ const app = () => {
         );
         errElm.style.display = "block";
         errElm.textContent = message;
-
         elemet.classList.add("input-error");
+      };
+
+      // remove error message
+      const removeError = (elemet, parentElm) => {
+        const errElm = document.querySelector(
+          `.${parentElm.parentElement.classList[0]} .input-error-msg`
+        );
+        errElm.style.display = "none";
+        elemet.classList.remove("input-error");
       };
 
       // checking card name
       if (!inputName.value) {
         displayError(inputName, inputName, blankField);
         isValid.push(false);
-      } else isValid.push(true);
-
+      } else {
+        removeError(inputName, inputName);
+      }
       // checking card number
       const callErrorOnNumber = (message) => {
         displayError(inputNumber, inputNumber, message);
         isValid.push(false);
       };
       const cardAbsValue = inputNumber.value.replaceAll(" ", "");
+      if (inputNumber.value.length < 19) {
+        callErrorOnNumber(incomplete);
+      }
       if (!Number.isInteger(Number(cardAbsValue))) {
         callErrorOnNumber(wrongFormat);
       }
       if (!inputNumber.value) {
         callErrorOnNumber(blankField);
       }
-      if (inputNumber.value.length < 19) {
-        callErrorOnNumber(incomplete);
-      } else isValid.push(true);
+      if (
+        inputNumber.value.length >= 19 &&
+        Number.isInteger(Number(cardAbsValue)) &&
+        inputNumber.value
+      ) {
+        removeError(inputNumber, inputNumber);
+      }
 
-      // checking date
-      // TODO : DATE VALIDATION
+      // date validation
+      const currMonth = new Date().getMonth() + 1;
+      const currYear = new Date().getFullYear() - 2000;
+
+      if (!(currMonth < inputExpMonth.value && inputExpMonth.value <= 12)) {
+        displayError(inputExpMonth, inputExpMonth.parentElement, nonValidMonth);
+        isValid.push(false);
+      }
+      if (currMonth < inputExpMonth.value && inputExpMonth.value <= 12) {
+        removeError(inputExpMonth, inputExpMonth.parentElement);
+      }
+
+      if (
+        !(currYear <= inputExpYear.value && inputExpYear.value <= currYear + 5)
+      ) {
+        displayError(inputExpYear, inputExpYear.parentElement, nonValidYear);
+        isValid.push(false);
+      }
+      if (
+        currYear <= inputExpYear.value &&
+        inputExpYear.value <= currYear + 5
+      ) {
+        if (!inputExpMonth.classList.contains("input-error")) {
+          removeError(inputExpYear, inputExpYear.parentElement);
+        }
+      }
+
+      // checking date input
       const callErrorOnDate = (e, message) => {
         displayError(e, e.parentElement, message);
         isValid.push(false);
       };
       [inputExpMonth, inputExpYear].forEach((e) => {
+        if (e.value.length < 2) {
+          callErrorOnDate(e, incomplete);
+        }
         if (!Number.isInteger(Number(e.value))) {
           callErrorOnDate(e, wrongFormat);
         }
         if (!e.value) {
           callErrorOnDate(e, blankField);
-        } else isValid.push(true);
+        }
       });
 
       // checking Cvc
       const callErrorOnCvc = (message) => {
-        displayError(inputCvc, inputCvc.parentElement, message);
+        displayError(inputCvc, inputCvc, message);
         isValid.push(false);
       };
+      if (inputCvc.value.length < 3) {
+        callErrorOnCvc(incomplete);
+      }
       if (!Number.isInteger(Number(inputCvc.value))) {
         callErrorOnCvc(wrongFormat);
       }
       if (!inputCvc.value) {
         callErrorOnCvc(blankField);
-      } else isValid.push(true);
+      }
+      if (
+        inputCvc.value.length >= 3 &&
+        Number.isInteger(Number(inputCvc.value)) &&
+        inputCvc.value
+      ) {
+        removeError(inputCvc, inputCvc);
+      }
 
-      console.log(isValid);
+      // return an array contains falsy value, or empty array(if all inputs are valid)
+      return isValid;
     };
 
     // form handler
+    const donePageTemplate = `
+      <main class="done">
+      <figure class="done__img">
+        <img src="/src/img/icon-complete.svg" alt="" />
+      </figure>
+      <h1>thank you!</h1>
+      <p>We've added your card details</p>
+      <button class="btn-main">Continue</button>
+      </main>
+    `;
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      checkForm();
+      if (!checkForm().length) {
+        console.log("alhamdolillah");
+        form.remove();
+        wrapper.insertAdjacentHTML("afterbegin", donePageTemplate);
+      }
     });
   };
   formValidation();
