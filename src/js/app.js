@@ -1,17 +1,17 @@
+// All the application logic goes here!
 const app = () => {
   // Parent Element
   const wrapper = document.querySelector(".wrapper");
 
   // Form
   const form = document.querySelector(".form__content");
-  const errorElement = document.querySelector(".input-error-msg");
+
   // inputs
   const inputName = document.querySelector(".form__content-name");
   const inputNumber = document.querySelector(".form__content-number");
   const inputExpMonth = document.querySelector(".form__content-date__month");
   const inputExpYear = document.querySelector(".form__content-date__year");
   const inputCvc = document.querySelector(".form__content-date__cvc");
-  const submitBtn = document.querySelector(".form__content-submit");
 
   // Card Elements
   const cardDegit = [
