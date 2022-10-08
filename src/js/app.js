@@ -107,35 +107,74 @@ const app = () => {
   const formValidation = () => {
     // check Form
     const checkForm = () => {
+      let isValid = [];
+
+      // Error Messages layout
+      const wrongFormat = "Wrong Format, numbers only!";
+      const blankField = `Can't be blank!`;
+      const incomplete = `Incomplete information!`;
+
       // error display
-      const displayError = (parentElm, message) => {
+      const displayError = (elemet, parentElm, message) => {
         const errElm = document.querySelector(
-          `.${parentElm.classList[0]} .input-error-msg`
+          `.${parentElm.parentElement.classList[0]} .input-error-msg`
         );
         errElm.style.display = "block";
         errElm.textContent = message;
+
+        elemet.classList.add("input-error");
       };
 
-      // valid form
-      const valid = () => {};
+      // checking card name
+      if (!inputName.value) {
+        displayError(inputName, inputName, blankField);
+        isValid.push(false);
+      } else isValid.push(true);
 
       // checking card number
+      const callErrorOnNumber = (message) => {
+        displayError(inputNumber, inputNumber, message);
+        isValid.push(false);
+      };
       const cardAbsValue = inputNumber.value.replaceAll(" ", "");
       if (!Number.isInteger(Number(cardAbsValue))) {
-        displayError(inputNumber.parentElement, "hhh");
+        callErrorOnNumber(wrongFormat);
       }
+      if (!inputNumber.value) {
+        callErrorOnNumber(blankField);
+      }
+      if (inputNumber.value.length < 19) {
+        callErrorOnNumber(incomplete);
+      } else isValid.push(true);
 
       // checking date
+      // TODO : DATE VALIDATION
+      const callErrorOnDate = (e, message) => {
+        displayError(e, e.parentElement, message);
+        isValid.push(false);
+      };
       [inputExpMonth, inputExpYear].forEach((e) => {
         if (!Number.isInteger(Number(e.value))) {
-          displayError(e.parentElement.parentElement, "test");
+          callErrorOnDate(e, wrongFormat);
         }
+        if (!e.value) {
+          callErrorOnDate(e, blankField);
+        } else isValid.push(true);
       });
 
-      // checking date
+      // checking Cvc
+      const callErrorOnCvc = (message) => {
+        displayError(inputCvc, inputCvc.parentElement, message);
+        isValid.push(false);
+      };
       if (!Number.isInteger(Number(inputCvc.value))) {
-        displayError(inputCvc.parentElement, "hello");
+        callErrorOnCvc(wrongFormat);
       }
+      if (!inputCvc.value) {
+        callErrorOnCvc(blankField);
+      } else isValid.push(true);
+
+      console.log(isValid);
     };
 
     // form handler
